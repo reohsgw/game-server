@@ -6,6 +6,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 public class CountryController {
+<<<<<<< Updated upstream
 
     private final RestTemplate restTemplate = new RestTemplate();
 
@@ -15,3 +16,15 @@ public class CountryController {
         return restTemplate.getForObject(url, String.class);
     }
 }
+=======
+    private final RestTemplate restTemplate = new RestTemplate();
+
+    @GetMapping("/countries/loading-info")
+    public String getCountries() {
+
+        String url = "https://restcountries.com/v3.1/alpha?codes=KOR,IDN,JPN&fields=name,capital,region,population,flags,currencies";
+        
+        return restTemplate.getForObject(url, String.class);
+    }
+}
+>>>>>>> Stashed changes
