@@ -12,6 +12,7 @@ public class PlayerProgress {
     private int lastUnlockedLevel;
     private int lastPlayedLevel;
     private int totalTime;
+    private int totalScore; 
 
     private String selectedCharacter;
     private String completedRecipes;
@@ -20,11 +21,13 @@ public class PlayerProgress {
     }
 
     public PlayerProgress(String playerId, int lastUnlockedLevel, int lastPlayedLevel,
-            int totalTime, String selectedCharacter, String completedRecipes) {
+            int totalTime, String selectedCharacter, String completedRecipes, int totalScore
+        ) {
         this.playerId = playerId;
         this.lastUnlockedLevel = lastUnlockedLevel;
         this.lastPlayedLevel = lastPlayedLevel;
         this.totalTime = totalTime;
+        this.totalScore = totalScore;
         this.selectedCharacter = selectedCharacter;
         this.completedRecipes = completedRecipes;
     }
@@ -53,6 +56,10 @@ public class PlayerProgress {
         return completedRecipes;
     }
 
+    public int getTotalScore() {
+        return totalScore;
+    }
+
     public void setPlayerId(String playerId) {
         this.playerId = playerId;
     }
@@ -75,5 +82,9 @@ public class PlayerProgress {
 
     public void setCompletedRecipes(String completedRecipes) {
         this.completedRecipes = completedRecipes;
+    }
+
+    public void setTotalScore(int totalScore) {
+        this.totalScore = totalScore;
     }
 }
