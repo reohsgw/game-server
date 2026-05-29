@@ -10,26 +10,17 @@ public class PlayerProgress {
     private String playerId;
 
     private int lastUnlockedLevel;
-    private int lastPlayedLevel;
-    private int totalTime;
-    private int totalScore; 
-
+    private int totalScore;
     private String selectedCharacter;
-    private String completedRecipes;
 
     public PlayerProgress() {
     }
 
-    public PlayerProgress(String playerId, int lastUnlockedLevel, int lastPlayedLevel,
-            int totalTime, String selectedCharacter, String completedRecipes, int totalScore
-        ) {
+    public PlayerProgress(String playerId, int lastUnlockedLevel, int totalScore, String selectedCharacter) {
         this.playerId = playerId;
         this.lastUnlockedLevel = lastUnlockedLevel;
-        this.lastPlayedLevel = lastPlayedLevel;
-        this.totalTime = totalTime;
         this.totalScore = totalScore;
         this.selectedCharacter = selectedCharacter;
-        this.completedRecipes = completedRecipes;
     }
 
     public String getPlayerId() {
@@ -40,24 +31,12 @@ public class PlayerProgress {
         return lastUnlockedLevel;
     }
 
-    public int getLastPlayedLevel() {
-        return lastPlayedLevel;
-    }
-
-    public int getTotalTime() {
-        return totalTime;
+    public int getTotalScore() {
+        return totalScore;
     }
 
     public String getSelectedCharacter() {
         return selectedCharacter;
-    }
-
-    public String getCompletedRecipes() {
-        return completedRecipes;
-    }
-
-    public int getTotalScore() {
-        return totalScore;
     }
 
     public void setPlayerId(String playerId) {
@@ -68,23 +47,11 @@ public class PlayerProgress {
         this.lastUnlockedLevel = lastUnlockedLevel;
     }
 
-    public void setLastPlayedLevel(int lastPlayedLevel) {
-        this.lastPlayedLevel = lastPlayedLevel;
-    }
-
-    public void setTotalTime(int totalTime) {
-        this.totalTime = totalTime;
+    public void setTotalScore(int totalScore) {
+        this.totalScore = totalScore;
     }
 
     public void setSelectedCharacter(String selectedCharacter) {
         this.selectedCharacter = selectedCharacter;
-    }
-
-    public void setCompletedRecipes(String completedRecipes) {
-        this.completedRecipes = completedRecipes;
-    }
-
-    public void setTotalScore(int totalScore) {
-        this.totalScore = totalScore;
     }
 }
