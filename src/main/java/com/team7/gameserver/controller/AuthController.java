@@ -3,6 +3,8 @@ package com.team7.gameserver.controller;
 import com.team7.gameserver.entity.User;
 import com.team7.gameserver.repository.UserRepository;
 import org.springframework.web.bind.annotation.*;
+import com.team7.gameserver.entity.PlayerProgress;
+import com.team7.gameserver.repository.PlayerProgressRepository;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,9 +14,11 @@ import java.util.Map;
 public class AuthController {
 
     private final UserRepository userRepository;
+    private final PlayerProgressRepository progressRepository;
 
-    public AuthController(UserRepository userRepository) {
+    public AuthController(UserRepository userRepository, PlayerProgressRepository progressRepository) {
         this.userRepository = userRepository;
+        this.progressRepository = progressRepository;
     }
 
     @PostMapping("/register")
@@ -46,6 +50,13 @@ public class AuthController {
 
         User user = new User(id, email, password);
         userRepository.save(user);
+        PlayerProgress defaultProgress = new PlayerProgress();
+        defaultProgress.setPlayerId(id);
+        defaultProgress.setLastUnlockedLevel(1);
+        defaultProgress.setTotalScore(0);
+        defaultProgress.setSelectedCharacter("chef_01");
+
+        progressRepository.save(defaultProgress);
 
         response.put("success", true);
         response.put("message", "Account created successfully");
