@@ -10,15 +10,30 @@ public class PlayerProgress {
     private String playerId;
 
     private int lastUnlockedLevel;
+
+    private int omuriceScore;
+    private int bibimbapScore;
+    private int rendangScore;
     private int totalScore;
+
     private String selectedCharacter;
 
     public PlayerProgress() {
     }
 
-    public PlayerProgress(String playerId, int lastUnlockedLevel, int totalScore, String selectedCharacter) {
+    public PlayerProgress(
+            String playerId,
+            int lastUnlockedLevel,
+            int omuriceScore,
+            int bibimbapScore,
+            int rendangScore,
+            int totalScore,
+            String selectedCharacter) {
         this.playerId = playerId;
         this.lastUnlockedLevel = lastUnlockedLevel;
+        this.omuriceScore = omuriceScore;
+        this.bibimbapScore = bibimbapScore;
+        this.rendangScore = rendangScore;
         this.totalScore = totalScore;
         this.selectedCharacter = selectedCharacter;
     }
@@ -29,6 +44,18 @@ public class PlayerProgress {
 
     public int getLastUnlockedLevel() {
         return lastUnlockedLevel;
+    }
+
+    public int getOmuriceScore() {
+        return omuriceScore;
+    }
+
+    public int getBibimbapScore() {
+        return bibimbapScore;
+    }
+
+    public int getRendangScore() {
+        return rendangScore;
     }
 
     public int getTotalScore() {
@@ -45,6 +72,18 @@ public class PlayerProgress {
 
     public void setLastUnlockedLevel(int lastUnlockedLevel) {
         this.lastUnlockedLevel = lastUnlockedLevel;
+    }
+
+    public void setOmuriceScore(int omuriceScore) {
+        this.omuriceScore = omuriceScore;
+    }
+
+    public void setBibimbapScore(int bibimbapScore) {
+        this.bibimbapScore = bibimbapScore;
+    }
+
+    public void setRendangScore(int rendangScore) {
+        this.rendangScore = rendangScore;
     }
 
     public void setTotalScore(int totalScore) {

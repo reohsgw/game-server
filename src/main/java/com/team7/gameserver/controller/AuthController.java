@@ -53,6 +53,9 @@ public class AuthController {
         PlayerProgress defaultProgress = new PlayerProgress();
         defaultProgress.setPlayerId(id);
         defaultProgress.setLastUnlockedLevel(1);
+        defaultProgress.setOmuriceScore(0);
+        defaultProgress.setBibimbapScore(0);
+        defaultProgress.setRendangScore(0);
         defaultProgress.setTotalScore(0);
         defaultProgress.setSelectedCharacter("chef_01");
 
