@@ -9,7 +9,7 @@ public class User {
     @Id
     private String id;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)

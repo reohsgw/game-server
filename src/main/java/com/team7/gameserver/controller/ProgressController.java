@@ -35,30 +35,25 @@ public class ProgressController {
 
         progress.setPlayerId(request.getPlayerId());
 
+        // just incase
         // Keep the highest unlocked level only
         progress.setLastUnlockedLevel(
-                Math.max(progress.getLastUnlockedLevel(), request.getLastUnlockedLevel())
-        );
+                Math.max(progress.getLastUnlockedLevel(), request.getLastUnlockedLevel()));
 
         // Keep the best score only for each recipe
         progress.setOmuriceScore(
-                Math.max(progress.getOmuriceScore(), request.getOmuriceScore())
-        );
+                Math.max(progress.getOmuriceScore(), request.getOmuriceScore()));
 
         progress.setBibimbapScore(
-                Math.max(progress.getBibimbapScore(), request.getBibimbapScore())
-        );
+                Math.max(progress.getBibimbapScore(), request.getBibimbapScore()));
 
         progress.setRendangScore(
-                Math.max(progress.getRendangScore(), request.getRendangScore())
-        );
+                Math.max(progress.getRendangScore(), request.getRendangScore()));
 
-        // Recalculate total score from saved best scores
         progress.setTotalScore(
                 progress.getOmuriceScore()
                         + progress.getBibimbapScore()
-                        + progress.getRendangScore()
-        );
+                        + progress.getRendangScore());
 
         if (request.getSelectedCharacter() != null && !request.getSelectedCharacter().isBlank()) {
             progress.setSelectedCharacter(request.getSelectedCharacter());
@@ -72,31 +67,29 @@ public class ProgressController {
         return response;
     }
 
-    @PostMapping("/load")
-    public Map<String, Object> loadProgress(@RequestBody Map<String, String> request) {
-        Map<String, Object> response = new HashMap<>();
+    @GetMapping("/load/{playerId}")
+public Map<String, Object> loadProgress(@PathVariable String playerId) {
+    Map<String, Object> response = new HashMap<>();
 
-        String playerId = request.get("playerId");
-
-        if (playerId == null || playerId.isBlank()) {
-            response.put("success", false);
-            response.put("message", "Player ID is required");
-            return response;
-        }
-
-        return progressRepository.findById(playerId)
-                .map(progress -> {
-                    response.put("success", true);
-                    response.put("message", "Progress loaded successfully");
-                    response.put("progress", progress);
-                    return response;
-                })
-                .orElseGet(() -> {
-                    response.put("success", false);
-                    response.put("message", "No progress found");
-                    return response;
-                });
+    if (playerId == null || playerId.isBlank()) {
+        response.put("success", false);
+        response.put("message", "Player ID is required");
+        return response;
     }
+
+    return progressRepository.findById(playerId)
+            .map(progress -> {
+                response.put("success", true);
+                response.put("message", "Progress loaded successfully");
+                response.put("progress", progress);
+                return response;
+            })
+            .orElseGet(() -> {
+                response.put("success", false);
+                response.put("message", "No progress found");
+                return response;
+            });
+}
 
     @PostMapping("/character")
     public Map<String, Object> updateCharacter(@RequestBody UpdateCharacterRequestDto request) {
