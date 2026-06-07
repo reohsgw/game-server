@@ -1,5 +1,6 @@
 package com.team7.gameserver.controller;
 
+import com.team7.gameserver.dto.ProgressRequest;
 import com.team7.gameserver.dto.UpdateCharacterRequestDto;
 import com.team7.gameserver.entity.PlayerProgress;
 import com.team7.gameserver.repository.PlayerProgressRepository;

@@ -1,4 +1,4 @@
-package com.team7.gameserver.controller;
+package com.team7.gameserver.dto;
 
 public class ProgressRequest {
     private String playerId;
