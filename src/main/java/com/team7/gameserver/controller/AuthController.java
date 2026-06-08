@@ -2,6 +2,8 @@ package com.team7.gameserver.controller;
 
 import com.team7.gameserver.entity.User;
 import com.team7.gameserver.repository.UserRepository;
+
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import com.team7.gameserver.entity.PlayerProgress;
 import com.team7.gameserver.repository.PlayerProgressRepository;
@@ -16,9 +18,15 @@ public class AuthController {
     private final UserRepository userRepository;
     private final PlayerProgressRepository progressRepository;
 
-    public AuthController(UserRepository userRepository, PlayerProgressRepository progressRepository) {
+    private final BCryptPasswordEncoder passwordEncoder;
+
+    
+    public AuthController(UserRepository userRepository,
+            PlayerProgressRepository progressRepository,
+            BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.progressRepository = progressRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @PostMapping("/register")
@@ -48,7 +56,8 @@ public class AuthController {
             return response;
         }
 
-        User user = new User(id, email, password);
+        String hashedPassword = passwordEncoder.encode(password);
+        User user = new User(id, email, hashedPassword);
         userRepository.save(user);
         PlayerProgress defaultProgress = new PlayerProgress();
         defaultProgress.setPlayerId(id);
@@ -81,7 +90,7 @@ public class AuthController {
 
         return userRepository.findById(id)
                 .map(user -> {
-                    if (user.getPassword().equals(password)) {
+                    if (passwordEncoder.matches(password, user.getPassword())) {
                         response.put("success", true);
                         response.put("message", "Login successful");
                     } else {
