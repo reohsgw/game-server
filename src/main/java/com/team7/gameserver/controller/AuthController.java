@@ -11,6 +11,7 @@ import com.team7.gameserver.repository.PlayerProgressRepository;
 import java.util.HashMap;
 import java.util.Map;
 
+//handles player registration and login
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -29,6 +30,7 @@ public class AuthController {
         this.passwordEncoder = passwordEncoder;
     }
 
+    //registers a new player — creates a user record and a default progress record
     @PostMapping("/register")
     public Map<String, Object> register(@RequestBody Map<String, String> request) {
         String id = request.get("id");
@@ -44,21 +46,24 @@ public class AuthController {
             return response;
         }
 
+        //check duplicate id and email 
         if (userRepository.existsById(id)) {
             response.put("success", false);
             response.put("message", "ID already exists");
             return response;
         }
-
         if (userRepository.existsByEmail(email)) {
             response.put("success", false);
             response.put("message", "Email already exists");
             return response;
         }
-
+        
+        //hash the password before saving to database
         String hashedPassword = passwordEncoder.encode(password);
         User user = new User(id, email, hashedPassword);
         userRepository.save(user);
+
+        //create a default progress record for the new player
         PlayerProgress defaultProgress = new PlayerProgress();
         defaultProgress.setPlayerId(id);
         defaultProgress.setLastUnlockedLevel(1);
@@ -75,6 +80,7 @@ public class AuthController {
         return response;
     }
 
+    //verify player input login info and return result
     @PostMapping("/login")
     public Map<String, Object> login(@RequestBody Map<String, String> request) {
         String id = request.get("id");

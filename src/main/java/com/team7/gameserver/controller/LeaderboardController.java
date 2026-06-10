@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+//returns all players ranked by total score for the leaderboard screen
 @RestController
 @RequestMapping("/leaderboard")
 @CrossOrigin(origins = "*")
@@ -19,6 +20,7 @@ public class LeaderboardController {
         this.progressRepository = progressRepository;
     }
 
+    //fetch all player progress records ordered by total score (highest first)
     @GetMapping
     public List<LeaderboardResponseDto> getLeaderboard() {
         List<PlayerProgress> progressList = progressRepository.findAllByOrderByTotalScoreDesc();

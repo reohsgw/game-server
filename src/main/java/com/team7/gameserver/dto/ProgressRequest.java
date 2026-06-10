@@ -1,5 +1,6 @@
 package com.team7.gameserver.dto;
 
+//carries progress data sent from Unity to the save endpoint
 public class ProgressRequest {
     private String playerId;
     private int lastUnlockedLevel;

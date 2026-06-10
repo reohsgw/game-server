@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 import java.util.Map;
 
+//fetches country information from external API (for the loading scene)
 @RestController
 public class CountryController {
 
@@ -17,6 +18,7 @@ public class CountryController {
         this.restTemplate = restTemplate;
     }
 
+    //calls restcountries.com to get info for japan, korea, and indonesia
     @GetMapping("/countries/loading-info")
     public Object getLoadingCountries() {
         String url = "https://restcountries.com/v3.1/alpha?codes=KOR,IDN,JPN&fields=name,capital,region,subregion,population,flags,languages,currencies";

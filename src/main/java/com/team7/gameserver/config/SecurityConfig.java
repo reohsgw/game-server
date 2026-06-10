@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
 
+// Disables Spring Security's default login page so all endpoints are accessible.
 @Configuration
 public class SecurityConfig {
 

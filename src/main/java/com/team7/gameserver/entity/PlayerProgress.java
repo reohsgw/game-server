@@ -2,21 +2,22 @@ package com.team7.gameserver.entity;
 
 import jakarta.persistence.*;
 
+//represents a players game progress - maps to the "player_progress" table
 @Entity
 @Table(name = "player_progress")
 public class PlayerProgress {
 
     @Id
-    private String playerId;
+    private String playerId; // referencing users.id
 
-    private int lastUnlockedLevel;
+    private int lastUnlockedLevel; 
 
     private int omuriceScore;
     private int bibimbapScore;
     private int rendangScore;
-    private int totalScore;
+    private int totalScore; //the sum of all three recipe scores
 
-    private String selectedCharacter;
+    private String selectedCharacter; //currently selected character
 
     public PlayerProgress() {
     }

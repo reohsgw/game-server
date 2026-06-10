@@ -1,5 +1,6 @@
 package com.team7.gameserver.dto;
 
+//carries leaderboard data sent from server to unity
 public class LeaderboardResponseDto {
 
     private int rank;

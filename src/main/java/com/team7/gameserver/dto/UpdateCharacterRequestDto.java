@@ -1,5 +1,6 @@
 package com.team7.gameserver.dto;
 
+//carries the character update request from unity
 public class UpdateCharacterRequestDto {
 
     private String playerId;
