@@ -7,7 +7,7 @@ import java.util.*;
 @RequestMapping("/recipes")
 @CrossOrigin(origins = "*")
 public class RecipeController {
-        //returns recipe data the ingredients and steps for each cooking levle
+        // returns recipe data the ingredients and steps for each cooking levle
         @GetMapping("/{recipeName}")
         public Map<String, Object> getRecipe(@PathVariable String recipeName) {
                 Map<String, Object> response = new HashMap<>();

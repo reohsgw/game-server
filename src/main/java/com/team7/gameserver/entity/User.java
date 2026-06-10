@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 public class User {
 
     @Id
-    private String id;  //players login id  (used as primary key)
+    private String id; // players login id (used as primary key)
 
     @Column(nullable = false, unique = true)
     private String email;

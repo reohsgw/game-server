@@ -1,6 +1,5 @@
 package com.team7.gameserver.repository;
 
-
 import com.team7.gameserver.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 

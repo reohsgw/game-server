@@ -5,7 +5,8 @@ public class LeaderboardResponseDto {
 
     private int rank;
     private String playerId;
-    private int totalScore; 
+    private int totalScore;
+
     public LeaderboardResponseDto(int rank, String playerId, int totalScore) {
         this.rank = rank;
         this.playerId = playerId;

@@ -13,12 +13,12 @@ import java.util.Map;
 public class CountryController {
 
     private final RestTemplate restTemplate;
-    
+
     public CountryController(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
-    //calls restcountries.com to get info for japan, korea, and indonesia
+    // calls restcountries.com to get info for japan, korea, and indonesia
     @GetMapping("/countries/loading-info")
     public Object getLoadingCountries() {
         String url = "https://restcountries.com/v3.1/alpha?codes=KOR,IDN,JPN&fields=name,capital,region,subregion,population,flags,languages,currencies";

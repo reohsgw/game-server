@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Configuration
 public class AppConfig {
-    //Single shared instance for making external HTTP requests
+    // Single shared instance for making external HTTP requests
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();

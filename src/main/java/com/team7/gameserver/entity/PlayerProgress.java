@@ -10,14 +10,14 @@ public class PlayerProgress {
     @Id
     private String playerId; // referencing users.id
 
-    private int lastUnlockedLevel; 
+    private int lastUnlockedLevel;
 
     private int omuriceScore;
     private int bibimbapScore;
     private int rendangScore;
-    private int totalScore; //the sum of all three recipe scores
+    private int totalScore; // the sum of all three recipe scores
 
-    private String selectedCharacter; //currently selected character
+    private String selectedCharacter; // currently selected character
 
     public PlayerProgress() {
     }

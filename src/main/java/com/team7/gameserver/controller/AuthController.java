@@ -21,7 +21,6 @@ public class AuthController {
 
     private final BCryptPasswordEncoder passwordEncoder;
 
-    
     public AuthController(UserRepository userRepository,
             PlayerProgressRepository progressRepository,
             BCryptPasswordEncoder passwordEncoder) {
@@ -30,7 +29,7 @@ public class AuthController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    //registers a new player — creates a user record and a default progress record
+    // registers a new player — creates a user record and a default progress record
     @PostMapping("/register")
     public Map<String, Object> register(@RequestBody Map<String, String> request) {
         String id = request.get("id");
@@ -46,7 +45,7 @@ public class AuthController {
             return response;
         }
 
-        //check duplicate id and email 
+        // check duplicate id and email
         if (userRepository.existsById(id)) {
             response.put("success", false);
             response.put("message", "ID already exists");
@@ -57,13 +56,13 @@ public class AuthController {
             response.put("message", "Email already exists");
             return response;
         }
-        
-        //hash the password before saving to database
+
+        // hash the password before saving to database
         String hashedPassword = passwordEncoder.encode(password);
         User user = new User(id, email, hashedPassword);
         userRepository.save(user);
 
-        //create a default progress record for the new player
+        // create a default progress record for the new player
         PlayerProgress defaultProgress = new PlayerProgress();
         defaultProgress.setPlayerId(id);
         defaultProgress.setLastUnlockedLevel(1);
@@ -80,7 +79,7 @@ public class AuthController {
         return response;
     }
 
-    //verify player input login info and return result
+    // verify player input login info and return result
     @PostMapping("/login")
     public Map<String, Object> login(@RequestBody Map<String, String> request) {
         String id = request.get("id");

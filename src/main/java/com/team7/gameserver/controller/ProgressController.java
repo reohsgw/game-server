@@ -56,7 +56,7 @@ public class ProgressController {
                         + progress.getBibimbapScore()
                         + progress.getRendangScore());
 
-        //only update character if a value was provided
+        // only update character if a value was provided
         if (request.getSelectedCharacter() != null && !request.getSelectedCharacter().isBlank()) {
             progress.setSelectedCharacter(request.getSelectedCharacter());
         }
@@ -69,7 +69,7 @@ public class ProgressController {
         return response;
     }
 
-    //load player progress by playerId
+    // load player progress by playerId
     @GetMapping("/load/{playerId}")
     public Map<String, Object> loadProgress(@PathVariable String playerId) {
         Map<String, Object> response = new HashMap<>();
@@ -94,7 +94,7 @@ public class ProgressController {
                 });
     }
 
-    //updates only the selected character for a player
+    // updates only the selected character for a player
     @PostMapping("/character")
     public Map<String, Object> updateCharacter(@RequestBody UpdateCharacterRequestDto request) {
         Map<String, Object> response = new HashMap<>();
