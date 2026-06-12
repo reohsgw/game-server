@@ -1,3 +1,4 @@
+//HASEGAWA REO
 package com.team7.gameserver.entity;
 
 import jakarta.persistence.*;

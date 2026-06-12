@@ -1,3 +1,4 @@
+//HASEGAWA REO
 package com.team7.gameserver.dto;
 
 //carries leaderboard data sent from server to unity

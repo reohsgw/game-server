@@ -1,3 +1,4 @@
+//HASEGAWA REO
 package com.team7.gameserver.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
